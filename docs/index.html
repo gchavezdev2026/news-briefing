@@ -27,88 +27,83 @@
         }
         .header h1 { font-size: 1.8em; margin-bottom: 10px; color: #fff; }
         .header .date { opacity: 0.8; font-size: 0.9em; color: #888; }
+        .content { margin-bottom: 20px; }
         .section {
-            background: #1a1a1a;
+            background: #252525;
             padding: 20px;
             border-radius: 8px;
             margin-bottom: 15px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.3);
-            border: 1px solid #333;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
         }
         .section h2 {
-            color: #66aaff;
-            border-left: 4px solid #66aaff;
+            color: #667eea;
+            border-left: 4px solid #667eea;
             padding-left: 15px;
             margin-bottom: 15px;
-            font-size: 1.2em;
+            font-size: 1.3em;
         }
-        .news-card {
-            background: #252525;
-            border-radius: 6px;
-            padding: 10px 12px;
-            margin-bottom: 10px;
-            border-left: 4px solid #66aaff;
-            transition: transform 0.2s;
+        .news-item {
+            border-bottom: 1px solid #333;
+            padding: 12px 0;
         }
-        .news-card:hover { transform: translateY(-2px); }
-        .title { font-weight: 600; color: #fff; text-decoration: none; }
+        .news-item:last-child { border-bottom: none; }
+        .title { font-weight: 600; color: #667eea; text-decoration: none; }
         .title:hover { text-decoration: underline; }
-        .title a { color: #66aaff; cursor: pointer; }
-        .news-card a { color: #66aaff; }
-        .source { color: #888; font-size: 0.85em; margin-top: 4px; }
+        .source { color: #888; font-size: 0.9em; margin-top: 4px; }
         .footer {
             text-align: center;
-            color: #888;
+            color: #666;
             font-size: 0.8em;
             margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #333;
         }
-        /* Drawer Styles */
+        /* === Drawer Lateral Derecho === */
         .drawer-overlay {
             position: fixed;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(0,0,0,0.7);
-            backdrop-filter: blur(5px);
-            z-index: 1000;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 9998;
             opacity: 0;
             visibility: hidden;
-            transition: opacity 0.3s, visibility 0.3s;
+            transition: opacity 0.3s ease;
         }
-        .drawer-overlay.active {
+        .drawer-overlay.show {
             opacity: 1;
             visibility: visible;
         }
         .drawer-container {
             position: fixed;
-            top: 0; right: -100%;
-            width: 90%; max-width: 600px;
-            height: 100vh;
+            top: 0;
+            right: -100%;
+            width: 80%;
+            max-width: 500px;
+            height: 100%;
             background: #1a1a1a;
-            box-shadow: -5px 0 20px rgba(0,0,0,0.5);
-            z-index: 1001;
-            transition: right 0.4s ease-out;
+            box-shadow: -2px 0 10px rgba(0,0,0,0.5);
+            z-index: 9999;
+            transition: right 0.3s ease;
             overflow-y: auto;
-            border-radius: 0 10px 10px 0;
         }
         .drawer-container.active {
             right: 0;
         }
         .drawer-header {
+            padding: 20px;
+            border-bottom: 1px solid #333;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px;
-            border-bottom: 1px solid #333;
-            background: #0a0a0a;
         }
-        .drawer-header h2 {
-            color: #66aaff;
-            font-size: 1.2em;
-        }
+        .drawer-header h2 { font-size: 1.2em; color: #fff; }
         .drawer-close {
             background: none;
             border: none;
+            color: #fff;
             font-size: 1.5em;
-            color: #66aaff;
             cursor: pointer;
         }
         .drawer-content {
@@ -118,219 +113,74 @@
             width: 100%;
             height: calc(100vh - 160px);
             border: none;
-            background: white;
         }
-        .drawer-content .fallback-link {
-            display: block;
-            background: #0a0a0a;
-            color: #66aaff;
-            padding: 15px;
-            text-align: center;
-            border-radius: 8px;
-            margin-top: 10px;
+        .drawer-back {
+            display: inline-block;
+            padding: 4px 8px;
+            background: #667eea;
+            color: white;
             text-decoration: none;
-        }
-        .drawer-content .fallback-link:hover {
-            background: #1a1a1a;
-        }
-        @media (max-width: 768px) {
-            .drawer-container {
-                width: 100%;
-                max-width: none;
-            }
+            font-size: 0.8em;
+            border-radius: 4px;
+            margin-left: 8px;
         }
     </style>
 </head>
 <body>
+    <div class="drawer-overlay" id="drawerOverlay"></div>
+    <div class="drawer-container" id="drawerContainer">
+        <div class="drawer-header">
+            <h2>Enlace Externo</h2>
+            <button class="drawer-close" id="drawerClose">&times;</button>
+        </div>
+        <div class="drawer-content">
+            <iframe src="" id="drawerFrame"></iframe>
+        </div>
+    </div>
+    
     <div class="header">
         <h1>📰 Resumen Diario de Noticias</h1>
-        <div class="date">Lunes, 24 de noviembre de 2026</div>
+        <div class="date">Fecha de actualización: Monday, 23 de November de 2026</div>
     </div>
-    <div class="section">
-        <h2>🌍 Mundo</h2>
-        <div class="news-card">
-            <a href="#" class="title link-external" data-url="https://www.perfil.com/economia/estaja-el-riesgo-pais-y-la-economia-tiembla-mas-de-1-000-puntos-y-el-dolar-llego-a-1-600-av6EM9i8HlTg">🇦🇷 <strong>Argentina — Polarización política y riesgo país</strong></a>
-            <div class="source">Perfil</div>
-            <br><small>El riesgo país de Argentina trepa a máximo en 13 meses alcanzando valores superiores a 1.000 puntos. Los bonos globales cayeron un 6% en la semana. La inflación registró suba del 2,2% en octubre de 2026.</small>
-        </div>
-        <div class="news-card">
-            <a href="#" class="title link-external" data-url="https://www.df.cl/economia-y-politica/politica/kast-reconoce-dificultad-para-lograr-meta-de-crecimiento-en-2026-y-sincera">🇨🇱 <strong>Chile — Gobierno Kast enfrenta desafíos laborales</strong></a>
-            <div class="source">Diario Financiero</div>
-            <br><small>El presidente Kast fija el empleo como prioridad para los próximos 100 días. Anticipa intensificar medidas para enfrentar el desempleo y acelerar obras del plan "Chile Despega". La aprobación de Kast sube a 23% en encuestas recientes.</small>
-        </div>
-        <div class="news-card">
-            <a href="#" class="title link-external" data-url="https://elpais.com/espana/elecciones-generales/2026-11-22/campana-electoral-29n-y-actualidad-politica-en-directo.html">🇪🇸 <strong>España — Crisis del 29-N y protestas</strong></a>
-            <div class="source">El País</div>
-            <br><small>España se acerca a las elecciones del 29 de noviembre con campañas políticas intensas. El PSOE anuncia un impuesto a los 'ultrarricos'. Según últimos sondeos, el PP lidera las encuestas preelectorales.</small>
-        </div>
-        <div class="news-card">
-            <a href="#" class="title link-external" data-url="https://www.superdeporte.es/futbol/2026/11/23/laliga-victima-ciberataque-roban-datos-ataque-136757540.html">🇪🇸 <strong>España — LaLiga sufre ciberataque</strong></a>
-            <div class="source">El País</div>
-            <br><small>LaLiga sufre un ciberataque que ha afectado datos personales de millones de aficionados. La Federación de Fútbol española confirma el incidente y trabaja con expertos en ciberseguridad.</small>
-        </div>
-        <div class="news-card">
-            <a href="#" class="title link-external" data-url="https://www.bloomberglinea.com/mercados/argentina/dolar-blue-hoy/">🇺🇸 <strong>EE.UU. — Crisis financiera del AI</strong></a>
-            <div class="source">Nine.com.au</div>
-            <br><small>Tres billones de dólares fueron borrados del mercado bursátil estadounidense. El Nasdaq 100 entra en bear market tras caída del 12,8% en Nvidia. Inversionistas pierden confianza en el sector IA.</small>
-        </div>
-        <div class="news-card">
-            <a href="#" class="title link-external" data-url="https://www.ft.com">🇺🇸 <strong>EE.UU. — Elecciones de medio término</strong></a>
-            <div class="source">Financial Times</div>
-            <br><small>Los demócratas ganan la mayor mayoría parlamentaria en décadas. Los candidatos presentan planes para revisar políticas fiscales y regulatorias del gobierno Trump.</small>
-        </div>
-    </div>
-    <div class="section">
-        <h2>💻 Tecnología</h2>
-        <div class="news-card">
-            <a href="#" class="title link-external" data-url="https://www.elEconomista.es/economia/2026/11/20/la-productividad-crecera-con-estos-4-factores.html">🇦🇷 <strong>Argentina — Red Neurona en Extremadura</strong></a>
-            <div class="source">El Economista</div>
-            <br><small>Nace la Red Neurona en Extremadura para duplicar la productividad de las pymes con IA. Inversión pública de 160 millones de euros en infraestructura tecnológica regional.</small>
-        </div>
-        <div class="news-card">
-            <a href="#" class="title link-external" data-url="https://www.df.cl/economia-y-politica/macro/ministros-aterrizan-principales-medidas-del-plan-de-reactivacion-de-kast-y">🇨🇱 <strong>Chile — Data centers en auge</strong></a>
-            <div class="source">Emol</div>
-            <br><small>Chile atraviesa una fuerte expansión de data centers con 42 operativos en 2026 y 321 MW de capacidad instalada. El gobierno busca atraer inversiones tecnológicas con apoyo de empresas como AWS y Microsoft.</small>
-        </div>
-        <div class="news-card">
-            <a href="#" class="title link-external" data-url="https://www.df.cl/economia-y-politica/politica/kast-reconoce-dificultad-para-lograr-meta-de-crecimiento-en-2026-y-sincera">🇨🇱 <strong>Chile — Alianza Asimov con AWS</strong></a>
-            <div class="source">Diario Financiero</div>
-            <br><small>Firma chilena Asimov cierra alianza con AWS para acelerar adopción de IA en Chile. Acuerdo incluye formación de talento y despliegue de infraestructura híbrida.</small>
-        </div>
-        <div class="news-card">
-            <a href="#" class="title link-external" data-url="https://elpais.com">🇺🇸 <strong>EE.UU. — Nvidia recupera a Jensen Huang</strong></a>
-            <div class="source">El País</div>
-            <br><small>El consejero delegado Nvidia recupera su posición tras polémica con la Inteligencia Artificial. Las acciones de la compañía suben más del 20% en tres días.</small>
-        </div>
-        <div class="news-card">
-            <a href="#" class="title link-external" data-url="https://www.euronews.com">🇺🇸 <strong>EE.UU. — Protestas contra IA</strong></a>
-            <div class="source">Euronews</div>
-            <br><small>Manifestantes exigen control humano sobre IA frente a sede de Anthropic en San Francisco. La empresa ha valorado su IPO en $1.5 billones.</small>
-        </div>
-        <div class="news-card">
-            <a href="#" class="title link-external" data-url="https://www.elEconomista.es/tecnologia/2026/11/20/apple-prepara-productos-americanos-baratos-2027.html">🇪🇸 <strong>España — Apple prepara productos asequibles</strong></a>
-            <div class="source">El Economista</div>
-            <br><small>Apple prepara catálogo de productos de gama media para 2027. La empresa busca expandir su market share en mercados emergentes y competir con marcas chinas.</small>
-        </div>
-        <div class="news-card">
-            <a href="#" class="title link-external" data-url="https://www.superdeporte.es/futbol/2026/11/23/laliga-victima-ciberataque-roban-datos-ataque-136757540.html">🇪🇸 <strong>España — LaLiga ciberataque</strong></a>
-            <div class="source">El País</div>
-            <br><small>Continuación de la noticia: LaLiga revela que el ataque fue coordinado y buscó interrumpir operaciones de pago. Los usuarios afectados recibirán notificaciones individuales.</small>
-        </div>
-    </div>
-    <div class="section">
-        <h2>📈 Finanzas</h2>
-        <div class="news-card">
-            <a href="#" class="title link-external" data-url="https://www.lanacion.com.ar/economia/dolar/dolar-hoy-y-dolar-blue-en-vivo-a-cuanto-cotizan-el-oficial-y-el-paralelo-este-viernes-20-de-nid20112026/">🇦🇷 <strong>Argentina — Riesgo país en alerta</strong></a>
-            <div class="source">La República</div>
-            <br><small>El riesgo país argentino cruza los 1.000 puntos, nivel no visto desde 2023. Analistas advierten sobre posible default soberano en 2027 si persisten las tensiones políticas.</small>
-        </div>
-        <div class="news-card">
-            <a href="#" class="title link-external" data-url="https://www.lanacion.com.ar/economia/dolar/dolar-hoy-y-dolar-blue-en-vivo-a-cuanto-cotizan-el-oficial-y-el-paralelo-este-viernes-20-de-nid20112026/">🇦🇷 <strong>Argentina — Economía estancada</strong></a>
-            <div class="source">Infobae</div>
-            <br><small>La economía argentina registra recuperación lenta después de fuerte caída. El 60% de la capacidad productiva de la industria metalúrgica está ociosa según datos oficiales.</small>
-        </div>
-        <div class="news-card">
-            <a href="#" class="title link-external" data-url="https://www.df.cl/economia-y-politica/macro/ministros-aterrizan-principales-medidas-del-plan-de-reactivacion-de-kast-y">🇨🇱 <strong>Chile — PIB contracción</strong></a>
-            <div class="source">La República</div>
-            <br><small>El PIB trimestral de Chile sorprende con contracción del 1,1% en el T3 2026, peor a expectativas del Imacec. Menor inversión y caída en minería explican la caída.</small>
-        </div>
-        <div class="news-card">
-            <a href="#" class="title link-external" data-url="https://elpais.com/espana/elecciones-generales/2026-11-21/campana-electoral-29n-y-actualidad-politica-en-directo.html">🇨🇱 <strong>Chile — China e IAs colaboran</strong></a>
-            <div class="source">La República</div>
-            <br><small>China llama a Chile a cooperar en IA y exploración polar. El presidente Kast destaca oportunidad para posicionar a Chile en ecosistema tecnológico global.</small>
-        </div>
-        <div class="news-card">
-            <a href="#" class="title link-external" data-url="https://www.bloomberglinea.com/mercados/argentina/dolar-blue-hoy/">🇺🇸 <strong>EE.UU. — Nasdaq en bear market</strong></a>
-            <div class="source">Nine.com.au</div>
-            <br><small>El Nasdaq 100 pierde más del 10% en una semana, entrando oficialmente en bear market. El índice estadounidense sufre peor caída desde pandemia de COVID-19.</small>
-        </div>
-        <div class="news-card">
-            <a href="#" class="title link-external" data-url="https://www.elEconomista.es/tecnologia/2026/11/23/anthropic-empieza-cotizacion-nasdaq-valoracion-1-5-billones.html">🇺🇸 <strong>EE.UU. — Anthropic IPO histórico</strong></a>
-            <div class="source">Euronews</div>
-            <br><small>Anthropic cotiza en NASDAQ con valoración de $1.5 billones, el mayor IPO de IA en la historia. Acciones suben 17% en debut y generan controversia por riesgos financieros.</small>
-        </div>
-        <div class="news-card">
-            <a href="#" class="title link-external" data-url="https://elpais.com/espana/elecciones-generales/2026-11-21/campana-electoral-29n-y-actualidad-politica-en-directo.html">🇪🇸 <strong>España — Amnistía a Puigdemont</strong></a>
-            <div class="source">El País</div>
-            <br><small>El Supremo español aplica amnistía a Carles Puigdemont por caso de malversación. Cierra definitivamente el 'procés' catalán, resolviendo conflicto judicial de 2017.</small>
-        </div>
-        <div class="news-card">
-            <a href="#" class="title link-external" data-url="https://www.expansion.com/empresas/2026/11/22/impuesto-ultrarricos-psoe.html">🇪🇸 <strong>España — Impuesto a ultrarricos</strong></a>
-            <div class="source">Expansión</div>
-            <br><small>El PSOE propone impuesto a los 'ultrarricos' inspirado en modelo francés. La medida genera críticas de la oposición y debate en medios sobre impacto fiscal.</small>
-        </div>
-    </div>
+    <div class="content"><div class="news-item"><a href="https://www.perfil.com/economia/estaja-el-riesgo-pais-y-la-economia-tiembla-mas-de-1.000-puntos-y-el-dolar-llego-a-1.600-av6EM9i8HlTg" class="link-external" data-url="https://www.perfil.com/economia/estaja-el-riesgo-pais-y-la-economia-tiembla-mas-de-1.000-puntos-y-el-dolar-llego-a-1.600-av6EM9i8HlTg" title="Abrir en drawer">🇦🇷 <strong>Argentina — Polarización política y riesgo país</strong></a><div class="source">Perfil)*</div><br><small>El riesgo país de Argentina trepa a máximo en 13 meses alcanzando valores superiores a 1.000 puntos. Los bonos globales cayeron un 6% en la semana. La inflación registró suba del 2,2% en octubre de 2026. La aprobación de Javier Milei cae según estudios recientes.</small></div><div class="news-item"><a href="https://www.df.cl/economia-y-politica/politica/kast-reconoce-dificultad-para-lograr-meta-de-crecimiento-en-2026-y-sincera" class="link-external" data-url="https://www.df.cl/economia-y-politica/politica/kast-reconoce-dificultad-para-lograr-meta-de-crecimiento-en-2026-y-sincera" title="Abrir en drawer">🇨🇱 <strong>Chile — Gobierno Kast enfrenta desafíos laborales</strong></a><div class="source">Diario Financiero)*</div><br><small>El presidente Kast fija el empleo como prioridad para los próximos 100 días. Anticipa intensificar medidas para enfrentar el desempleo y acelerar obras del plan "Chile Despega". La aprobación de Kast sube a 23% en encuestas recientes.</small></div><div class="news-item"><a href="https://elpais.com/espana/elecciones-generales/2026-11-22/campana-electoral-29n-y-actualidad-politica-en-directo.html" class="link-external" data-url="https://elpais.com/espana/elecciones-generales/2026-11-22/campana-electoral-29n-y-actualidad-politica-en-directo.html" title="Abrir en drawer">🇪🇸 <strong>España — Crisis del 29-N y protestas</strong></a><div class="source">El País)*</div><br><small>España se acerca a las elecciones del 29 de noviembre con campañas políticas intensas. El PSOE anuncia un impuesto a los 'ultrarricos'. Según últimos sondeos, el PP lidera las encuestas preelectorales.</small></div><div class="news-item"><a href="https://www.superdeporte.es/futbol/2026/11/23/laliga-victima-ciberataque-roban-datos-ataque-136757540.html" class="link-external" data-url="https://www.superdeporte.es/futbol/2026/11/23/laliga-victima-ciberataque-roban-datos-ataque-136757540.html" title="Abrir en drawer">🇪🇸 <strong>España — LaLiga sufre ciberataque</strong></a><div class="source">El País)*</div><br><small>LaLiga sufre un ciberataque que ha afectado datos personales de millones de aficionados. La Federación de Fútbol española confirma el incidente y trabaja con expertos en ciberseguridad.</small></div><div class="news-item">🇺🇸 <strong>EE.UU. — Crisis financiera del AI</strong> <span class="source">(Fuente: Nine.com.au)*)</span><br><small>Tres billones de dólares fueron borrados del mercado bursátil estadounidense. El Nasdaq 100 entra en bear market tras caída del 12,8% en Nvidia. Inversionistas pierden confianza en el sector IA.</small></div><div class="news-item">🇺🇸 <strong>EE.UU. — Elecciones de medio término</strong> <span class="source">(Fuente: Financial Times)*)</span><br><small>Los demócratas ganan la mayor mayoría parlamentaria en décadas. Los candidatos presentan planes para revisar políticas fiscales y regulatorias del gobierno Trump.</small></div><div class="news-item"><a href="https://www.perfil.com/economia/estaja-el-riesgo-pais-y-la-economia-tiembla-mas-de-1.000-puntos-y-el-dolar-llego-a-1.600-av6EM9i8HlTg" class="link-external" data-url="https://www.perfil.com/economia/estaja-el-riesgo-pais-y-la-economia-tiembla-mas-de-1.000-puntos-y-el-dolar-llego-a-1.600-av6EM9i8HlTg" title="Abrir en drawer">🇦🇷 <strong>Argentina — Red Neurona en Extremadura</strong></a><div class="source">El Economista)*</div><br><small>Nace la Red Neurona en Extremadura para duplicar la productividad de las pymes con IA. Inversión pública de 160 millones de euros en infraestructura tecnológica regional.</small></div><div class="news-item"><a href="https://www.df.cl/economia-y-politica/politica/kast-reconoce-dificultad-para-lograr-meta-de-crecimiento-en-2026-y-sincera" class="link-external" data-url="https://www.df.cl/economia-y-politica/politica/kast-reconoce-dificultad-para-lograr-meta-de-crecimiento-en-2026-y-sincera" title="Abrir en drawer">🇨🇱 <strong>Chile — Data centers en auge</strong></a><div class="source">Emol)*</div><br><small>Chile atraviesa una fuerte expansión de data centers con 42 operativos en 2026 y 321 MW de capacidad instalada. El gobierno busca atraer inversiones tecnológicas con apoyo de empresas como AWS y Microsoft.</small></div><div class="news-item"><a href="https://www.df.cl/economia-y-politica/politica/kast-reconoce-dificultad-para-lograr-meta-de-crecimiento-en-2026-y-sincera" class="link-external" data-url="https://www.df.cl/economia-y-politica/politica/kast-reconoce-dificultad-para-lograr-meta-de-crecimiento-en-2026-y-sincera" title="Abrir en drawer">🇨🇱 <strong>Chile — Alianza Asimov con AWS</strong></a><div class="source">Diario Financiero)*</div><br><small>Firma chilena Asimov cierra alianza con AWS para acelerar adopción de IA en Chile. Acuerdo incluye formación de talento y despliegue de infraestructura híbrida.</small></div><div class="news-item">🇺🇸 <strong>EE.UU. — Nvidia recupera a Jensen Huang</strong> <span class="source">(Fuente: El País)*)</span><br><small>El consejero delegado Nvidia recupera su posición tras polémica con la Inteligencia Artificial. Las acciones de la compañía suben más del 20% en tres días.</small></div><div class="news-item">🇺🇸 <strong>EE.UU. — Protestas contra IA</strong> <span class="source">(Fuente: Euronews)*)</span><br><small>Manifestantes exigen control humano sobre IA frente a sede de Anthropic en San Francisco. La empresa ha valorado su IPO en $1.5 billones.</small></div><div class="news-item"><a href="https://www.elEconomista.es/tecnologia/2026/11/20/apple-prepara-productos-americanos-baratos-2027.html" class="link-external" data-url="https://www.elEconomista.es/tecnologia/2026/11/20/apple-prepara-productos-americanos-baratos-2027.html" title="Abrir en drawer">🇪🇸 <strong>España — Apple prepara productos asequibles</strong></a><div class="source">El Economista)*</div><br><small>Apple prepara catálogo de productos de gama media para 2027. La empresa busca expandir su market share en mercados emergentes y competir con marcas chinas.</small></div><div class="news-item"><a href="https://www.superdeporte.es/futbol/2026/11/23/laliga-victima-ciberataque-roban-datos-ataque-136757540.html" class="link-external" data-url="https://www.superdeporte.es/futbol/2026/11/23/laliga-victima-ciberataque-roban-datos-ataque-136757540.html" title="Abrir en drawer">🇪🇸 <strong>España — LaLiga ciberataque</strong></a><div class="source">El País)*</div><br><small>Continuación de la noticia: LaLiga revela que el ataque fue coordinado y buscó interrumpir operaciones de pago. Los usuarios afectados recibirán notificaciones individuales.</small></div><div class="news-item"><a href="https://www.perfil.com/economia/estaja-el-riesgo-pais-y-la-economia-tiembla-mas-de-1.000-puntos-y-el-dolar-llego-a-1.600-av6EM9i8HlTg" class="link-external" data-url="https://www.perfil.com/economia/estaja-el-riesgo-pais-y-la-economia-tiembla-mas-de-1.000-puntos-y-el-dolar-llego-a-1.600-av6EM9i8HlTg" title="Abrir en drawer">🇦🇷 <strong>Argentina — Riesgo país en alerta</strong></a><div class="source">La República)*</div><br><small>El riesgo país argentino cruza los 1.000 puntos, nivel no visto desde 2023. Analistas advierten sobre posible default soberano en 2027 si persisten las tensiones políticas.</small></div><div class="news-item"><a href="https://www.perfil.com/economia/estaja-el-riesgo-pais-y-la-economia-tiembla-mas-de-1.000-puntos-y-el-dolar-llego-a-1.600-av6EM9i8HlTg" class="link-external" data-url="https://www.perfil.com/economia/estaja-el-riesgo-pais-y-la-economia-tiembla-mas-de-1.000-puntos-y-el-dolar-llego-a-1.600-av6EM9i8HlTg" title="Abrir en drawer">🇦🇷 <strong>Argentina — Economía estancada</strong></a><div class="source">Infobae)*</div><br><small>La economía argentina registra recuperación lenta después de fuerte caída. El 60% de la capacidad productiva de la industria metalúrgica está ociosa según datos oficiales.</small></div><div class="news-item"><a href="https://www.df.cl/economia-y-politica/macro/ministros-aterrizan-principales-medidas-del-plan-de-reactivacion-de-kast-y" class="link-external" data-url="https://www.df.cl/economia-y-politica/macro/ministros-aterrizan-principales-medidas-del-plan-de-reactivacion-de-kast-y" title="Abrir en drawer">🇨🇱 <strong>Chile — PIB contracción</strong></a><div class="source">La República)*</div><br><small>El PIB trimestral de Chile sorprende con contracción del 1,1% en el T3 2026, peor a expectativas del Imacec. Menor inversión y caíncia en minería explican la caída.</small></div><div class="news-item"><a href="https://www.df.cl/economia-y-politica/politica/kast-reconoce-dificultad-para-lograr-meta-de-crecimiento-en-2026-y-sincera" class="link-external" data-url="https://www.df.cl/economia-y-politica/politica/kast-reconoce-dificultad-para-lograr-meta-de-crecimiento-en-2026-y-sincera" title="Abrir en drawer">🇨🇱 <strong>Chile — China e IAs colaboran</strong></a><div class="source">La República)*</div><br><small>China llama a Chile a cooperar en IA y exploración polar. El presidente Kast destaca oportunidad para posicionar a Chile en ecosistema tecnológico global.</small></div><div class="news-item">🇺🇸 <strong>EE.UU. — Nasdaq en bear market</strong> <span class="source">(Fuente: Nine.com.au)*)</span><br><small>El Nasdaq 100 pierde más del 10% en una semana, entrando oficialmente en bear market. El índice estadounidense sufre peor caída desde pandemia de COVID-19.</small></div><div class="news-item">🇺🇸 <strong>EE.UU. — Anthropic IPO histórico</strong> <span class="source">(Fuente: Euronews)*)</span><br><small>Anthropic cotiza en NASDAQ con valoración de $1.5 billones, el mayor IPO de IA en la historia. Acciones suben 17% en debut y generan controversia por riesgos financieros.</small></div><div class="news-item"><a href="https://elpais.com/espana/elecciones-generales/2026-11-22/campana-electoral-29n-y-actualidad-politica-en-directo.html" class="link-external" data-url="https://elpais.com/espana/elecciones-generales/2026-11-22/campana-electoral-29n-y-actualidad-politica-en-directo.html" title="Abrir en drawer">🇪🇸 <strong>España — Amnistía a Puigdemont</strong></a><div class="source">El País)*</div><br><small>El Supremo español aplica amnistía a Carles Puigdemont por caso de malversación. Cierra definitivamente el 'procés' catalán, resolviendo conflicto judicial de 2017.</small></div><div class="news-item"><a href="https://elpais.com" class="link-external" data-url="https://elpais.com" title="Abrir en drawer">🇪🇸 <strong>España — Impuesto a ultrarricos</strong></a><div class="source">Expansión)*</div><br><small>El PSOE propone impuesto a los 'ultrarricos' inspirado en modelo francés. La medida genera críticas de la oposición y debate en medios sobre impacto fiscal.</small></div></div>
     <div class="footer">
         <p>📍 Argentina 🇨🇱 Chile 🇺🇸 Estados Unidos 🇪🇸 España</p>
         <p>🔗 <a href="https://github.com/gchavezdev2026/news-briefing">Ver fuente en GitHub</a> | Generado automáticamente por Hermes Agent</p>
     </div>
-
-    <!-- Drawer Overlay -->
-    <div class="drawer-overlay" id="drawerOverlay"></div>
-    
-    <!-- Drawer Container -->
-    <div class="drawer-container" id="drawerContainer">
-        <div class="drawer-header">
-            <h2 id="drawerTitle">Noticia</h2>
-            <button class="drawer-close" id="drawerClose">&times;</button>
-        </div>
-        <div class="drawer-content">
-            <iframe id="drawerFrame" sandbox="allow-scripts allow-same-origin allow-popups"></iframe>
-            <a href="#" id="fallbackLink" class="fallback-link" target="_blank">Abrir en nueva pestaña</a>
-        </div>
-    </div>
-
     <script>
-        // Drawer functionality
-        const drawerOverlay = document.getElementById('drawerOverlay');
-        const drawerContainer = document.getElementById('drawerContainer');
-        const drawerFrame = document.getElementById('drawerFrame');
-        const drawerTitle = document.getElementById('drawerTitle');
-        const drawerClose = document.getElementById('drawerClose');
-        const fallbackLink = document.getElementById('fallbackLink');
-
-        // Open drawer with link
-        document.querySelectorAll('.link-external').forEach(link => {
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-                const url = this.getAttribute('data-url');
-                
-                // Extract domain for title
-                try {
-                    const urlObj = new URL(url);
-                    const domain = urlObj.hostname.replace('www.', '');
-                    drawerTitle.textContent = `Leer artículo: ${domain}`;
-                } catch (err) {
-                    drawerTitle.textContent = 'Leer artículo';
-                }
-                
-                // Set iframe source with fallback
-                drawerFrame.src = url;
-                
-                // Update fallback link
-                fallbackLink.href = url;
-                
-                // Show drawer
-                drawerOverlay.classList.add('active');
-                drawerContainer.classList.add('active');
+        document.addEventListener('DOMContentLoaded', function() {
+            const overlay = document.getElementById('drawerOverlay');
+            const container = document.getElementById('drawerContainer');
+            const frame = document.getElementById('drawerFrame');
+            const closeBtn = document.getElementById('drawerClose');
+            
+            // Handle external links with drawer class
+            document.querySelectorAll('.link-external').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const url = this.getAttribute('data-url') || this.href;
+                    frame.src = url;
+                    container.classList.add('active');
+                    overlay.classList.add('show');
+                });
             });
-        });
-
-        // Close drawer functions
-        function closeDrawer() {
-            drawerOverlay.classList.remove('active');
-            drawerContainer.classList.remove('active');
-            drawerFrame.src = 'about:blank';
-        }
-
-        drawerClose.addEventListener('click', closeDrawer);
-        drawerOverlay.addEventListener('click', closeDrawer);
-
-        // Close with ESC key
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape' && drawerContainer.classList.contains('active')) {
-                closeDrawer();
+            
+            // Close drawer
+            function closeDrawer() {
+                container.classList.remove('active');
+                overlay.classList.remove('show');
+                frame.src = '';
             }
+            
+            closeBtn.addEventListener('click', closeDrawer);
+            overlay.addEventListener('click', closeDrawer);
+            
+            // Keyboard close
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && container.classList.contains('active')) {
+                    closeDrawer();
+                }
+            });
         });
     </script>
 </body>
