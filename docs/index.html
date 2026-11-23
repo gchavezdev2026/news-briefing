@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Resumen diario de noticias de Argentina, Chile, EE.UU. y España">
-    <title>Resumen Diario de Noticias</title>
+    <title>📰 Resumen Diario de Noticias</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
@@ -13,177 +13,178 @@
             max-width: 900px;
             margin: 0 auto;
             padding: 20px;
-            background: #f5f5f5;
-            color: #333;
+            background: #0a0a0a;
+            color: #e0e0e0;
         }
         .header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: #1a1a1a;
             color: white;
             padding: 30px;
             border-radius: 10px;
             margin-bottom: 20px;
             text-align: center;
+            border: 1px solid #333;
         }
-        .header h1 { font-size: 2em; margin-bottom: 10px; }
+        .header h1 { font-size: 1.8em; margin-bottom: 10px; color: #fff; }
+        .header .date { opacity: 0.8; font-size: 0.9em; color: #888; }
         .section {
-            background: white;
+            background: #1a1a1a;
             padding: 20px;
             border-radius: 8px;
             margin-bottom: 15px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            border: 1px solid #333;
         }
         .section h2 {
-            color: #667eea;
-            border-left: 4px solid #667eea;
+            color: #66aaff;
+            border-left: 4px solid #66aaff;
             padding-left: 15px;
             margin-bottom: 15px;
-            font-size: 1.3em;
+            font-size: 1.2em;
         }
-        .news-item {
-            border-bottom: 1px solid #eee;
-            padding: 12px 0;
+        .news-card {
+            background: #252525;
+            border-radius: 6px;
+            padding: 10px 12px;
+            margin-bottom: 10px;
+            border-left: 4px solid #66aaff;
+            transition: transform 0.2s;
         }
-        .news-item:last-child { border-bottom: none; }
-        .title { font-weight: 600; color: #667eea; text-decoration: none; }
+        .news-card:hover { transform: translateY(-2px); }
+        .title { font-weight: 600; color: #fff; text-decoration: none; }
         .title:hover { text-decoration: underline; }
-        .source { color: #666; font-size: 0.85em; margin-top: 4px; }
+        .title a { color: #66aaff; }
+        .source { color: #888; font-size: 0.85em; margin-top: 4px; }
         .footer {
             text-align: center;
-            color: #666;
+            color: #888;
             font-size: 0.8em;
             margin-top: 30px;
-            padding-top: 20px;
-            border-top: 1px solid #eee;
         }
     </style>
 </head>
 <body>
     <div class="header">
-        <h1>Resumen Diario de Noticias</h1>
-        <div class="date">Fecha de actualizacion: Lunes, 24 de noviembre de 2026</div>
+        <h1>📰 Resumen Diario de Noticias</h1>
+        <div class="date">Lunes, 24 de noviembre de 2026</div>
     </div>
-
     <div class="section">
-        <h2>Mundo</h2>
-        <div class="content">
-            <div class="news-item">
-                <a href="https://www.perfil.com/economia/estaja-el-riesgo-pais-y-la-economia-tiembla-mas-de-1.000-puntos-y-el-dolar-llego-a-1.600-av6EM9i8HlTg" class="title">Argentina — Polarizacion politica y riesgo pais</a>
-                <div class="source">Perfil</div>
-                <br><small>El riesgo pais de Argentina trepa a maximo en 13 meses alcanzando valores superiores a 1.000 puntos. Los bonos globales cayeron un 6% en la semana.</small>
-            </div>
-            <div class="news-item">
-                <a href="https://www.df.cl/economia-y-politica/politica/kast-reconoce-dificultad-para-lograr-meta-de-crecimiento-en-2026-y-sincera" class="title">Chile — Gobierno Kast enfrenta desafios laborales</a>
-                <div class="source">Diario Financiero</div>
-                <br><small>El presidente Kast fija el empleo como prioridad para los prximos 100 dias. Anticipa intensificar medidas para enfrentar el desempleo y acelerar obras del plan Chile Despega.</small>
-            </div>
-            <div class="news-item">
-                <a href="https://elpais.com/espana/elecciones-generales/2026-11-22/campana-electoral-29n-y-actualidad-politica-en-directo.html" class="title">Espana — Crisis del 29-N y protestas</a>
-                <div class="source">El Pais</div>
-                <br><small>España se acerca a las elecciones del 29 de noviembre con campañas políticas intensas. El PSOE anuncia un impuesto a los ultrarricos.</small>
-            </div>
-            <div class="news-item">
-                <a href="https://www.superdeporte.es/futbol/2026/11/23/laliga-victima-ciberataque-roban-datos-ataque-136757540.html" class="title">Espana — LaLiga sufre ciberataque</a>
-                <div class="source">El Pais</div>
-                <br><small>LaLiga sufre un ciberataque que ha afectado datos personales de millones de aficionados. La Federacin de ftbol espaola confirma el incidente.</small>
-            </div>
-            <div class="news-item">
-                <a href="https://www.bloomberglinea.com/mercados/argentina/dolar-blue-hoy/" class="title">EE.UU. — Crisis financiera del AI</a>
-                <div class="source">Bloomberg</div>
-                <br><small>Tres billones de dlares fueron borrados del mercado bursatil estadounidense. El Nasdaq 100 entra en bear market tras caida del 12,8% en Nvidia.</small>
-            </div>
-            <div class="news-item">
-                <a href="https://www.ft.com" class="title">EE.UU. — Elecciones de medio termino</a>
-                <div class="source">Financial Times</div>
-                <br><small>Los demcratas ganan la mayor mayoría parlamentaria en décadas. Los candidatos presentan planes para revisar políticas fiscales y regulatorias del gobierno Trump.</small>
-            </div>
+        <h2>🌍 Mundo</h2>
+        <div class="news-card">
+            <a href="https://www.perfil.com/economia/estaja-el-riesgo-pais-y-la-economia-tiembla-mas-de-1-000-puntos-y-el-dolar-llego-a-1-600-av6EM9i8HlTg" class="title">🇦🇷 <strong>Argentina — Polarización política y riesgo país</strong></a>
+            <div class="source">Perfil</div>
+            <br><small>El riesgo país de Argentina trepa a máximo en 13 meses alcanzando valores superiores a 1.000 puntos. Los bonos globales cayeron un 6% en la semana. La inflación registró suba del 2,2% en octubre de 2026.</small>
+        </div>
+        <div class="news-card">
+            <a href="https://www.df.cl/economia-y-politica/politica/kast-reconoce-dificultad-para-lograr-meta-de-crecimiento-en-2026-y-sincera" class="title">🇨🇱 <strong>Chile — Gobierno Kast enfrenta desafíos laborales</strong></a>
+            <div class="source">Diario Financiero</div>
+            <br><small>El presidente Kast fija el empleo como prioridad para los próximos 100 días. Anticipa intensificar medidas para enfrentar el desempleo y acelerar obras del plan "Chile Despega". La aprobación de Kast sube a 23% en encuestas recientes.</small>
+        </div>
+        <div class="news-card">
+            <a href="https://elpais.com/espana/elecciones-generales/2026-11-22/campana-electoral-29n-y-actualidad-politica-en-directo.html" class="title">🇪🇸 <strong>España — Crisis del 29-N y protestas</strong></a>
+            <div class="source">El País</div>
+            <br><small>España se acerca a las elecciones del 29 de noviembre con campañas políticas intensas. El PSOE anuncia un impuesto a los 'ultrarricos'. Según últimos sondeos, el PP lidera las encuestas preelectorales.</small>
+        </div>
+        <div class="news-card">
+            <a href="https://www.superdeporte.es/futbol/2026/11/23/laliga-victima-ciberataque-roban-datos-ataque-136757540.html" class="title">🇪🇸 <strong>España — LaLiga sufre ciberataque</strong></a>
+            <div class="source">El País</div>
+            <br><small>LaLiga sufre un ciberataque que ha afectado datos personales de millones de aficionados. La Federación de Fútbol española confirma el incidente y trabaja con expertos en ciberseguridad.</small>
+        </div>
+        <div class="news-card">
+            <a href="https://www.bloomberglinea.com/mercados/argentina/dolar-blue-hoy/" class="title">🇺🇸 <strong>EE.UU. — Crisis financiera del AI</strong></a>
+            <div class="source">Nine.com.au</div>
+            <br><small>Tres billones de dólares fueron borrados del mercado bursátil estadounidense. El Nasdaq 100 entra en bear market tras caída del 12,8% en Nvidia. Inversionistas pierden confianza en el sector IA.</small>
+        </div>
+        <div class="news-card">
+            <a href="https://www.ft.com" class="title">🇺🇸 <strong>EE.UU. — Elecciones de medio término</strong></a>
+            <div class="source">Financial Times</div>
+            <br><small>Los demócratas ganan la mayor mayoría parlamentaria en décadas. Los candidatos presentan planes para revisar políticas fiscales y regulatorias del gobierno Trump.</small>
         </div>
     </div>
-
     <div class="section">
-        <h2>Technologia</h2>
-        <div class="content">
-            <div class="news-item">
-                <a href="https://www.elEconomista.es/economia/2026/11/20/la-productividad-crecera-con-estos-4-factores.html" class="title">Argentina — Red Neurona en Extremadura</a>
-                <div class="source">El Economista</div>
-                <br><small>Nace la Red Neurona en Extremadura para duplicar la productividad de las pymes con IA. Inversin pública de 160 millones de euros en infraestructura tecnologica regional.</small>
-            </div>
-            <div class="news-item">
-                <a href="https://www.df.cl/economia-y-politica/macro/ministros-aterrizan-principales-medidas-del-plan-de-reactivacion-de-kast-y" class="title">Chile — Data centers en auge</a>
-                <div class="source">Diario Financiero</div>
-                <br><small>Chile registra 42 data centers operativos en 2026 con 321 MW de capacidad instalada. El gobierno busca atraer inversiones tecnologicas.</small>
-            </div>
-            <div class="news-item">
-                <a href="https://www.df.cl/economia-y-politica/politica/kast-reconoce-dificultad-para-lograr-meta-de-crecimiento-en-2026-y-sincera" class="title">Chile — Alianza Asimov con AWS</a>
-                <div class="source">Diario Financiero</div>
-                <br><small>Firma chilena Asimov cierra alianza con AWS para acelerar adopcin de IA en Chile.</small>
-            </div>
-            <div class="news-item">
-                <a href="https://elpais.com" class="title">EE.UU. — Nvidia recupera a Jensen Huang</a>
-                <div class="source">El Pais</div>
-                <br><small>El consejero delegado Nvidia recupera su posicin tras polmica con la Inteligencia Artificial.</small>
-            </div>
-            <div class="news-item">
-                <a href="https://www.euronews.com" class="title">EE.UU. — Protestas contra IA</a>
-                <div class="source">Euronews</div>
-                <br><small>Manifestantes exigen control humano sobre IA frente a sede de Anthropic en San Francisco.</small>
-            </div>
-            <div class="news-item">
-                <a href="https://www.elEconomista.es/tecnologia/2026/11/20/apple-prepara-productos-americanos-baratos-2027.html" class="title">Espana — Apple prepara productos asequibles</a>
-                <div class="source">El Economista</div>
-                <br><small>Apple prepara catlogo de productos de gama media para 2027.</small>
-            </div>
+        <h2>💻 Tecnología</h2>
+        <div class="news-card">
+            <a href="https://www.elEconomista.es/economia/2026/11/20/la-productividad-crecera-con-estos-4-factores.html" class="title">🇦🇷 <strong>Argentina — Red Neurona en Extremadura</strong></a>
+            <div class="source">El Economista</div>
+            <br><small>Nace la Red Neurona en Extremadura para duplicar la productividad de las pymes con IA. Inversión pública de 160 millones de euros en infraestructura tecnológica regional.</small>
+        </div>
+        <div class="news-card">
+            <a href="https://www.df.cl/economia-y-politica/macro/ministros-aterrizan-principales-medidas-del-plan-de-reactivacion-de-kast-y" class="title">🇨🇱 <strong>Chile — Data centers en auge</strong></a>
+            <div class="source">Emol</div>
+            <br><small>Chile atraviesa una fuerte expansión de data centers con 42 operativos en 2026 y 321 MW de capacidad instalada. El gobierno busca atraer inversiones tecnológicas con apoyo de empresas como AWS y Microsoft.</small>
+        </div>
+        <div class="news-card">
+            <a href="https://www.df.cl/economia-y-politica/politica/kast-reconoce-dificultad-para-lograr-meta-de-crecimiento-en-2026-y-sincera" class="title">🇨🇱 <strong>Chile — Alianza Asimov con AWS</strong></a>
+            <div class="source">Diario Financiero</div>
+            <br><small>Firma chilena Asimov cierra alianza con AWS para acelerar adopción de IA en Chile. Acuerdo incluye formación de talento y despliegue de infraestructura híbrida.</small>
+        </div>
+        <div class="news-card">
+            <a href="https://elpais.com" class="title">🇺🇸 <strong>EE.UU. — Nvidia recupera a Jensen Huang</strong></a>
+            <div class="source">El País</div>
+            <br><small>El consejero delegado Nvidia recupera su posición tras polémica con la Inteligencia Artificial. Las acciones de la compañía suben más del 20% en tres días.</small>
+        </div>
+        <div class="news-card">
+            <a href="https://www.euronews.com" class="title">🇺🇸 <strong>EE.UU. — Protestas contra IA</strong></a>
+            <div class="source">Euronews</div>
+            <br><small>Manifestantes exigen control humano sobre IA frente a sede de Anthropic en San Francisco. La empresa ha valorado su IPO en $1.5 billones.</small>
+        </div>
+        <div class="news-card">
+            <a href="https://www.elEconomista.es/tecnologia/2026/11/20/apple-prepara-productos-americanos-baratos-2027.html" class="title">🇪🇸 <strong>España — Apple prepara productos asequibles</strong></a>
+            <div class="source">El Economista</div>
+            <br><small>Apple prepara catálogo de productos de gama media para 2027. La empresa busca expandir su market share en mercados emergentes y competir con marcas chinas.</small>
+        </div>
+        <div class="news-card">
+            <a href="https://www.superdeporte.es/futbol/2026/11/23/laliga-victima-ciberataque-roban-datos-ataque-136757540.html" class="title">🇪🇸 <strong>España — LaLiga ciberataque</strong></a>
+            <div class="source">El País</div>
+            <br><small>Continuación de la noticia: LaLiga revela que el ataque fue coordinado y buscó interrumpir operaciones de pago. Los usuarios afectados recibirán notificaciones individuales.</small>
         </div>
     </div>
-
     <div class="section">
-        <h2>Finanzas</h2>
-        <div class="content">
-            <div class="news-item">
-                <a href="https://www.lanacion.com.ar/economia/dolar/dolar-hoy-y-dolar-blue-en-vivo-a-cuanto-cotizan-el-oficial-y-el-paralelo-este-viernes-20-de-nid20112026/" class="title">Argentina — Riesgo pais en alerta</a>
-                <div class="source">La Republica</div>
-                <br><small>El riesgo pais argentino cruza los 1.000 puntos, nivel no visto desde 2023. Analistas advierten sobre posible default soberano en 2027 si persisten las tensiones politicas.</small>
-            </div>
-            <div class="news-item">
-                <a href="https://www.lanacion.com.ar/economia/dolar/dolar-hoy-y-dolar-blue-en-vivo-a-cuanto-cotizan-el-oficial-y-el-paralelo-este-viernes-20-de-nid20112026/" class="title">Argentina — Economia estancada</a>
-                <div class="source">Infobae</div>
-                <br><small>La economia argentina registra recuperacion lenta despues de fuerte caida. El 60% de la capacidad productiva de la industria metalurgica esta ociosa segun datos oficiales.</small>
-            </div>
-            <div class="news-item">
-                <a href="https://www.df.cl/economia-y-politica/macro/ministros-aterrizan-principales-medidas-del-plan-de-reactivacion-de-kast-y" class="title">Chile — PIB contraccion</a>
-                <div class="source">Diario Financiero</div>
-                <br><small>El PIB trimestral de Chile sorprende con contraccion del 1,1% en el T3 2026, peor a expectativas del Imacec.</small>
-            </div>
-            <div class="news-item">
-                <a href="https://elpais.com/espana/elecciones-generales/2026-11-21/campana-electoral-29n-y-actualidad-politica-en-directo.html" class="title">Espana — China e IAs colaboran</a>
-                <div class="source">El Pais</div>
-                <br><small>China llama a Chile a cooperar en IA y exploracin polar. El presidente Kast destaca oportunidad para posicionar a Chile en ecosistema tecnolgico global.</small>
-            </div>
-            <div class="news-item">
-                <a href="https://www.bloomberglinea.com/mercados/argentina/dolar-blue-hoy/" class="title">EE.UU. — Nasdaq en bear market</a>
-                <div class="source">Bloomberg</div>
-                <br><small>El Nasdaq 100 pierde ms del 10% en una semana, entrando oficialmente en bear market.</small>
-            </div>
-            <div class="news-item">
-                <a href="https://www.elEconomista.es/tecnologia/2026/11/23/anthropic-empieza-cotizacion-nasdaq-valoracion-1-5-billones.html" class="title">EE.UU. — Anthropic IPO historico</a>
-                <div class="source">Euronews</div>
-                <br><small>Anthropic cotiza en NASDAQ con valoracin de 1.5 billones, el mayor IPO de IA en la histora.</small>
-            </div>
-            <div class="news-item">
-                <a href="https://elpais.com/espana/elecciones-generales/2026-11-21/campana-electoral-29n-y-actualidad-politica-en-directo.html" class="title">Espana — Amnistia a Puigdemont</a>
-                <div class="source">El Pais</div>
-                <br><small>El Supremo espaol aplica amnistía a Carles Puigdemont por caso de malversación.</small>
-            </div>
-            <div class="news-item">
-                <a href="https://www.expansion.com/empresas/2026/11/22/impuesto-ultrarricos-psoe.html" class="title">Espana — Impuesto a ultrarricos</a>
-                <div class="source">Expansion</div>
-                <br><small>El PSOE propone impuesto a los ultrarricos inspirado en modelo francés.</small>
-            </div>
+        <h2>📈 Finanzas</h2>
+        <div class="news-card">
+            <a href="https://www.lanacion.com.ar/economia/dolar/dolar-hoy-y-dolar-blue-en-vivo-a-cuanto-cotizan-el-oficial-y-el-paralelo-este-viernes-20-de-nid20112026/" class="title">🇦🇷 <strong>Argentina — Riesgo país en alerta</strong></a>
+            <div class="source">La República</div>
+            <br><small>El riesgo país argentino cruza los 1.000 puntos, nivel no visto desde 2023. Analistas advierten sobre posible default soberano en 2027 si persisten las tensiones políticas.</small>
+        </div>
+        <div class="news-card">
+            <a href="https://www.lanacion.com.ar/economia/dolar/dolar-hoy-y-dolar-blue-en-vivo-a-cuanto-cotizan-el-oficial-y-el-paralelo-este-viernes-20-de-nid20112026/" class="title">🇦🇷 <strong>Argentina — Economía estancada</strong></a>
+            <div class="source">Infobae</div>
+            <br><small>La economía argentina registra recuperación lenta después de fuerte caída. El 60% de la capacidad productiva de la industria metalúrgica está ociosa según datos oficiales.</small>
+        </div>
+        <div class="news-card">
+            <a href="https://www.df.cl/economia-y-politica/macro/ministros-aterrizan-principales-medidas-del-plan-de-reactivacion-de-kast-y" class="title">🇨🇱 <strong>Chile — PIB contracción</strong></a>
+            <div class="source">La República</div>
+            <br><small>El PIB trimestral de Chile sorprende con contracción del 1,1% en el T3 2026, peor a expectativas del Imacec. Menor inversión y caída en minería explican la caída.</small>
+        </div>
+        <div class="news-card">
+            <a href="https://elpais.com/espana/elecciones-generales/2026-11-21/campana-electoral-29n-y-actualidad-politica-en-directo.html" class="title">🇨🇱 <strong>Chile — China e IAs colaboran</strong></a>
+            <div class="source">La República</div>
+            <br><small>China llama a Chile a cooperar en IA y exploración polar. El presidente Kast destaca oportunidad para posicionar a Chile en ecosistema tecnológico global.</small>
+        </div>
+        <div class="news-card">
+            <a href="https://www.bloomberglinea.com/mercados/argentina/dolar-blue-hoy/" class="title">🇺🇸 <strong>EE.UU. — Nasdaq en bear market</strong></a>
+            <div class="source">Nine.com.au</div>
+            <br><small>El Nasdaq 100 pierde más del 10% en una semana, entrando oficialmente en bear market. El índice estadounidense sufre peor caída desde pandemia de COVID-19.</small>
+        </div>
+        <div class="news-card">
+            <a href="https://www.elEconomista.es/tecnologia/2026/11/23/anthropic-empieza-cotizacion-nasdaq-valoracion-1-5-billones.html" class="title">🇺🇸 <strong>EE.UU. — Anthropic IPO histórico</strong></a>
+            <div class="source">Euronews</div>
+            <br><small>Anthropic cotiza en NASDAQ con valoración de $1.5 billones, el mayor IPO de IA en la historia. Acciones suben 17% en debut y generan controversia por riesgos financieros.</small>
+        </div>
+        <div class="news-card">
+            <a href="https://elpais.com/espana/elecciones-generales/2026-11-21/campana-electoral-29n-y-actualidad-politica-en-directo.html" class="title">🇪🇸 <strong>España — Amnistía a Puigdemont</strong></a>
+            <div class="source">El País</div>
+            <br><small>El Supremo español aplica amnistía a Carles Puigdemont por caso de malversación. Cierra definitivamente el 'procés' catalán, resolviendo conflicto judicial de 2017.</small>
+        </div>
+        <div class="news-card">
+            <a href="https://www.expansion.com/empresas/2026/11/22/impuesto-ultrarricos-psoe.html" class="title">🇪🇸 <strong>España — Impuesto a ultrarricos</strong></a>
+            <div class="source">Expansión</div>
+            <br><small>El PSOE propone impuesto a los 'ultrarricos' inspirado en modelo francés. La medida genera críticas de la oposición y debate en medios sobre impacto fiscal.</small>
         </div>
     </div>
-
     <div class="footer">
-        <p>Argentina  Chile  Estados Unidos  Espana</p>
-        <p><a href="https://github.com/gchavezdev2026/news-briefing">Ver fuente en GitHub</a> | Generado automaticamente por Hermes Agent</p>
+        <p>📍 Argentina 🇨🇱 Chile 🇺🇸 Estados Unidos 🇪🇸 España</p>
+        <p>🔗 <a href="https://github.com/gchavezdev2026/news-briefing">Ver fuente en GitHub</a> | Generado automáticamente por Hermes Agent</p>
     </div>
 </body>
 </html>
