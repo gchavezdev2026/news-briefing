@@ -1,1 +1,100 @@
-<!-- GitHub Pages - Initial -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📰 Resumen Diario de Noticias</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            line-height: 1.6;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            min-height: 100vh;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+        h1 {
+            color: #667eea;
+            text-align: center;
+            margin-bottom: 10px;
+            font-size: 2em;
+        }
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+        }
+        .status {
+            background: #f0f8ff;
+            border-left: 4px solid #667eea;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 0 8px 8px 0;
+        }
+        .countries {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 20px 0;
+            font-size: 1.5em;
+        }
+        .next-update {
+            text-align: center;
+            color: #888;
+            font-size: 0.9em;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+        }
+        .btn-refresh {
+            display: block;
+            width: 200px;
+            margin: 20px auto;
+            padding: 12px 24px;
+            background: #667eea;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+        .btn-refresh:hover { background: #5a6fd6; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📰 Resumen Diario de Noticias</h1>
+        <p class="subtitle">Argentina 🇨🇱 Chile 🇺🇸 Estados Unidos 🇪🇸 España</p>
+        
+        <div class="status">
+            <strong>✅ GitHub Pages Configurado</strong><br>
+            La página se actualizará automáticamente cada día a las 9:00 AM (Chile).
+        </div>
+        
+        <div class="countries">
+            🇦🇷 Argentina • 🇨🇱 Chile • 🇺🇸 USA • 🇪🇸 España
+        </div>
+        
+        <div style="text-align: center; margin: 30px 0;">
+            <p><strong>🌍 Mundo</strong> | <strong>💻 Tecnología</strong> | <strong>📈 Finanzas</strong></p>
+        </div>
+        
+        <a href="#" class="btn-refresh">🔄 Refrescar</a>
+        
+        <p class="next-update">
+            Próxima actualización: <strong>Lunes, 24 de noviembre de 2026</strong><br>
+            A las 9:00 AM (Chile) / 12:00 PM (UTC)
+        </p>
+    </div>
+</body>
+</html>
